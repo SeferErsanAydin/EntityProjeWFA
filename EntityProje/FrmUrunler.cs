@@ -74,13 +74,14 @@ namespace EntityProje
 
         private void BtnEkle_Click(object sender, EventArgs e)
         {
+           
             TblUrunler urun = new TblUrunler()
             {
                 UrunAd = TxtUrunAdi.Text,
                 UrunMarka = TxtUrunMarka.Text,
                 UrunStok = Convert.ToInt16(TxtUrunStok.Text),
                 UrunFiyat = Convert.ToDecimal(TxtUrunFiyat.Text),
-                UrunDurum = true,
+                UrunDurum = Convert.ToBoolean(TxtUrunDurum.Text),
                 UrunKategori = Convert.ToInt16(CmbKategoriler.SelectedValue.ToString()),
             };
             db.TblUrunler.Add(urun);
@@ -110,6 +111,7 @@ namespace EntityProje
             guncellenecekUrun.UrunStok = Convert.ToInt16(TxtUrunStok.Text);
             guncellenecekUrun.UrunFiyat = Convert.ToDecimal(TxtUrunFiyat.Text);
             guncellenecekUrun.UrunKategori = Convert.ToInt16(CmbKategoriler.SelectedValue.ToString());
+            guncellenecekUrun.UrunDurum = Convert.ToBoolean(TxtUrunDurum.Text);
             db.SaveChanges();
             MessageBox.Show("Urun Guncellendi");
             Temizle();
@@ -119,6 +121,17 @@ namespace EntityProje
         private void BtnCikis_Click_1(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           TxtUrunID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+           TxtUrunMarka.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+           TxtUrunAdi.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+           TxtUrunStok.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+           TxtUrunFiyat.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+           CmbKategoriler.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+           TxtUrunDurum.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
         }
     }
 }

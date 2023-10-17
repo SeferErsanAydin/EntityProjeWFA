@@ -78,5 +78,11 @@ namespace EntityProje
             Temizle();
             Listele();
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            TxtKategoriID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            TxtKategoriAdi.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+        }
     }
 }

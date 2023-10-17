@@ -62,6 +62,7 @@
             // 
             // TxtUrunID
             // 
+            this.TxtUrunID.Enabled = false;
             this.TxtUrunID.Location = new System.Drawing.Point(59, 12);
             this.TxtUrunID.Name = "TxtUrunID";
             this.TxtUrunID.Size = new System.Drawing.Size(100, 20);
@@ -207,6 +208,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(573, 402);
             this.dataGridView1.TabIndex = 6231;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // BtnCikis
             // 
