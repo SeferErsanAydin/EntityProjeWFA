@@ -19,7 +19,7 @@ namespace EntityProje
 
         DbEntityUrunEntities db = new DbEntityUrunEntities();
 
-        private void button5_Click(object sender, EventArgs e)
+        private void BtnCikis_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
@@ -114,6 +114,11 @@ namespace EntityProje
             MessageBox.Show("Urun Guncellendi");
             Temizle();
             Listele();
+        }
+
+        private void BtnCikis_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

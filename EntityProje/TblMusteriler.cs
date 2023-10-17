@@ -24,6 +24,7 @@ namespace EntityProje
         public string MusteriAd { get; set; }
         public string MusteriSoyad { get; set; }
         public string MusteriSehir { get; set; }
+        public Nullable<bool> MusteriDurum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblSatislar> TblSatislar { get; set; }

@@ -34,5 +34,10 @@ namespace EntityProje
             frm.Show();
         }
 
+        private void BtnIstatistik_Click(object sender, EventArgs e)
+        {
+            FrmIstatistik frm = new FrmIstatistik();
+            frm.Show();
+        }
     }
 }

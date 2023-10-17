@@ -46,7 +46,7 @@
             this.BtnSil = new System.Windows.Forms.Button();
             this.BtnGuncelle = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
+            this.BtnCikis = new System.Windows.Forms.Button();
             this.CmbKategoriler = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -208,16 +208,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(573, 402);
             this.dataGridView1.TabIndex = 6231;
             // 
-            // button5
+            // BtnCikis
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(355, 420);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(73, 45);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Çıkış";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.BtnCikis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCikis.Location = new System.Drawing.Point(355, 420);
+            this.BtnCikis.Name = "BtnCikis";
+            this.BtnCikis.Size = new System.Drawing.Size(73, 45);
+            this.BtnCikis.TabIndex = 11;
+            this.BtnCikis.Text = "Çıkış";
+            this.BtnCikis.UseVisualStyleBackColor = true;
+            this.BtnCikis.Click += new System.EventHandler(this.BtnCikis_Click_1);
             // 
             // CmbKategoriler
             // 
@@ -233,7 +233,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 466);
             this.Controls.Add(this.CmbKategoriler);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.BtnCikis);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.BtnGuncelle);
             this.Controls.Add(this.BtnSil);
@@ -283,7 +283,7 @@
         private System.Windows.Forms.Button BtnSil;
         private System.Windows.Forms.Button BtnGuncelle;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button BtnCikis;
         private System.Windows.Forms.ComboBox CmbKategoriler;
     }
 }

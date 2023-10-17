@@ -4,7 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DbEntityUrunModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DbEntityUrunModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TblAdminler">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciIsim" Type="varchar" MaxLength="20" />
+          <Property Name="KullaniciSifre" Type="varchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="TblKategoriler">
           <Key>
             <PropertyRef Name="KategoriID" />
@@ -20,6 +28,7 @@
           <Property Name="MusteriAd" Type="varchar" MaxLength="30" />
           <Property Name="MusteriSoyad" Type="varchar" MaxLength="30" />
           <Property Name="MusteriSehir" Type="varchar" MaxLength="15" />
+          <Property Name="MusteriDurum" Type="bit" />
         </EntityType>
         <EntityType Name="TblSatislar">
           <Key>
@@ -79,7 +88,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="MARKAGETIR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DbEntityUrunModelStoreContainer">
+          <EntitySet Name="TblAdminler" EntityType="Self.TblAdminler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblKategoriler" EntityType="Self.TblKategoriler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMusteriler" EntityType="Self.TblMusteriler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblSatislar" EntityType="Self.TblSatislar" Schema="dbo" store:Type="Tables" />
@@ -97,8 +108,7 @@
             <End Role="TblUrunler" EntitySet="TblUrunler" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbEntityUrunModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -119,6 +129,7 @@
           <Property Name="MusteriSoyad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="MusteriSehir" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TblSatislar" Relationship="Self.FK_TblSatislar_TblMusteriler" FromRole="TblMusteriler" ToRole="TblSatislar" />
+          <Property Name="MusteriDurum" Type="Boolean" />
         </EntityType>
         <EntityType Name="TblSatislar">
           <Key>
@@ -199,7 +210,17 @@
             <End Role="TblUrunler" EntitySet="TblUrunler" />
             <End Role="TblSatislar" EntitySet="TblSatislar" />
           </AssociationSet>
+          <FunctionImport Name="MARKAGETIR" ReturnType="Collection(String)" />
+          <EntitySet Name="TblAdminler" EntityType="DbEntityUrunModel.TblAdminler" />
         </EntityContainer>
+        <EntityType Name="TblAdminler">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciIsim" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="KullaniciSifre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -217,6 +238,7 @@
           <EntitySetMapping Name="TblMusteriler">
             <EntityTypeMapping TypeName="DbEntityUrunModel.TblMusteriler">
               <MappingFragment StoreEntitySet="TblMusteriler">
+                <ScalarProperty Name="MusteriDurum" ColumnName="MusteriDurum" />
                 <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
                 <ScalarProperty Name="MusteriAd" ColumnName="MusteriAd" />
                 <ScalarProperty Name="MusteriSoyad" ColumnName="MusteriSoyad" />
@@ -245,6 +267,16 @@
                 <ScalarProperty Name="UrunFiyat" ColumnName="UrunFiyat" />
                 <ScalarProperty Name="UrunDurum" ColumnName="UrunDurum" />
                 <ScalarProperty Name="UrunKategori" ColumnName="UrunKategori" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="MARKAGETIR" FunctionName="DbEntityUrunModel.Store.MARKAGETIR" />
+          <EntitySetMapping Name="TblAdminler">
+            <EntityTypeMapping TypeName="DbEntityUrunModel.TblAdminler">
+              <MappingFragment StoreEntitySet="TblAdminler">
+                <ScalarProperty Name="KullaniciSifre" ColumnName="KullaniciSifre" />
+                <ScalarProperty Name="KullaniciIsim" ColumnName="KullaniciIsim" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

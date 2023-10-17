@@ -75,6 +75,7 @@
             this.BtnIstatistik.TabIndex = 4;
             this.BtnIstatistik.Text = "İstatistikler";
             this.BtnIstatistik.UseVisualStyleBackColor = true;
+            this.BtnIstatistik.Click += new System.EventHandler(this.BtnIstatistik_Click);
             // 
             // FrmAnaForm
             // 
